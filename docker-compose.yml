@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  hugo:
+    build: .
+    container_name: zdb_website
+    volumes:
+      - .:/src
+    ports:
+      - "1313:1313"
+    environment:
+      - HUGO_ENVIRONMENT=development
+      - HUGO_BUILDDRAFTS=true
+    command: server --bind 0.0.0.0 --themesDir themes --theme hugo-creative-portfolio-theme

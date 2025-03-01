@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{{ with .Site.Title }}<title>{{ . }}</title>{{ end }}
+{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Carter+One:400,300,700,400italic">
+<link rel="stylesheet" href="{{ "css/font-awesome.min.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/owl.carousel.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/owl.theme.css" | absURL }}">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<!-- Theme stylesheet, if possible do not edit this stylesheet -->
+{{ with .Site.Params.style }}
+  <link href="{{ printf "css/style.%s.css" . | absURL }}" rel="stylesheet" id="theme-stylesheet">
+{{ else }}
+  <link href="{{ "css/style.default.css" | absURL }}" rel="stylesheet" id="theme-stylesheet">
+{{ end }}
+<!-- Custom stylesheet - for your changes -->
+{{ $styles := resources.Get "css/custom.css" | fingerprint }}
+<link href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" rel="stylesheet">
+<link href="{{ "css/demo.css" | absURL }}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ "img/favicon.png" | absURL }}">
+{{ with .OutputFormats.Get "RSS" }}
+  {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
+{{ end }}
+{{ template "_internal/google_analytics.html" . }}

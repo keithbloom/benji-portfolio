@@ -1,0 +1,18 @@
+{{ $contentImage := resources.Get .image  | fingerprint }}
+<div>
+  {{- if .imageLink -}}
+    <a href="{{ .imageLink }}" target="_blank">
+      <img
+        src="{{ $contentImage.RelPermalink }}"
+        width="{{ $contentImage.Width }}"
+        height="{{ $contentImage.Height }}"
+        class="img-responsive" />
+    </a>
+  {{- else -}}
+    <img
+      src="{{ $contentImage.RelPermalink }}"
+      width="{{ $contentImage.Width }}"
+      height="{{ $contentImage.Height }}"
+      class="img-responsive" />
+  {{- end -}}
+</div>
