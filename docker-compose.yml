@@ -3,7 +3,7 @@ version: '3'
 services:
   hugo:
     build: .
-    container_name: zdb_website
+    container_name: benji-portfolio-website 
     volumes:
       - .:/src
     ports:

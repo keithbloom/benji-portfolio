@@ -1,40 +1,17 @@
-baseURL = "https://zdbproductions.co.uk/"
+baseURL = "https://benjibloom.co.uk/"
 languageCode = "en-us"
-title = "Zach Bloom Media"
+title = "Benji Bloom"
 theme = "hugo-creative-portfolio-theme"
 
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
   # Use custom.css for your custom styling
-  style = "red"
+  style = "blue"
   description = "Describe your website"
-  copyright = "&copy;2021 Zach Bloom"
-  sidebarAbout = [
-    "As a young child, I liked to create short films. Initially, I used my iPod and iMovie to create stop animation movies using Lego figures to depict fun storylines set to music.  As an older child, I became part of Henry Jenkins participatory culture; a prosumer, wanting to create content for my own YouTube channel.  It was during the first lockdown, when my world shrunk and life went  online, that I started creating short films.  It combined my love of narrative with love of technology and helped me cope with the isolation. I experimented with various video editing software before settling on Premier Pro.  I was self taught, watching YouTube tutorials first on the basics, then on specific skills, such as key framing or colour grading.",
-    "I have recently completed my education, gaining AAB for A Levels in Media, Business and History. I also achieved an A for my EPQ titled “Brexit, was it a remain failure or leave success?”. I have a confirmed place at UEA for BA (Hons) Film & Television Production for deferred entry in 2025. It is my ambition to have a career in the media industry."
-  ]
+  copyright = "&copy;2025 Benji Bloom"
+  sidebarAbout = [""]
   # Contact page
-     # Since this template is static, the contact form uses www.formspree.io as a
-     # proxy. The form makes a POST request to their servers to send the actual
-     # email. Visitors can send up to a 1000 emails each month for free.
-     #
-     # What you need to do for the setup?
-     #
-     # - set your email address under 'email' below
-     # - upload the generated site to your server
-     # - send a dummy email yourself to confirm your account
-     # - click the confirm link in the email from www.formspree.io
-     # - you're done. Happy mailing!
   email = "you@yoursite.com"
-
-    # Optional Matomo analytics (formerly piwik)
-      # [params.analytics.matomo]
-      #  URL = "https://stats.example.com"
-      #  ID = "42"
-      #  # Track all subdomains with "*.example.com" (Optional)
-      #  domain = "www.example.com"
-      #  # Optional integrity check hash
-      #  hash = ""
 
   # Nav links in the side bar
   [[params.navlinks]]

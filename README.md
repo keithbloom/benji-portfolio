@@ -1,2 +1,1 @@
-# ZDB Productions website
-[![Netlify Status](https://api.netlify.com/api/v1/badges/09e26df0-3bd1-4556-96f4-20b2601a7e0a/deploy-status)](https://app.netlify.com/sites/practical-brahmagupta-65f83f/deploys)
+# Benji Portfolio Website
