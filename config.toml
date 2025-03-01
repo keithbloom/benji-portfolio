@@ -1,4 +1,4 @@
-baseURL = "https://benjibloom.co.uk/"
+baseURL = "https://benji-bloom-portfolio.netlify.app/"
 languageCode = "en-us"
 title = "Benji Bloom"
 theme = "hugo-creative-portfolio-theme"
