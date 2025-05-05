@@ -1,5 +1,5 @@
 # Stage 1: Build CSS with Tailwind
-FROM node:18-alpine as node-builder
+FROM node:23-alpine AS node-builder
 
 WORKDIR /app
 

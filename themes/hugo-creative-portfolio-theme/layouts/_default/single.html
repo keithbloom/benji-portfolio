@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="w-full md:w-3/4 lg:w-4/5 bg-white inner-article">
-    <div class="page-head page-head-{{ default "1" $.Params.headerNumber }}">
-      <h2>{{ .Title }}</h2>
+    <div class="page-head page-head-{{ default "1" $.Params.headerNumber }}-container">
+      <h2 class="page-head-{{ default "1" $.Params.headerNumber }}-heading">{{ .Title }}</h2>
     </div>
     
     {{ partial "mobile_nav_toggle.html" . }}
@@ -28,38 +28,7 @@
               {{ .Content }}
             </div>
           {{- end -}}
-          
-          <div class="mt-12 py-4 border-t border-gray-200">
-            <nav>
-              <ul class="flex justify-between items-center">
-                {{ if .NextPage }}
-                  <li class="previous">
-                    <a href="{{ .NextPage.Permalink }}?ref=footer" class="text-gray-600 hover:text-zone-41-red transition-colors flex items-center">
-                      <span aria-hidden="true" class="mr-1">&larr;</span> Previous
-                    </a>
-                  </li>
-                {{ else }}
-                  <li class="invisible"></li>
-                {{ end }}
-                
-                <li>
-                  <a href="{{ .Site.BaseURL }}" class="text-gray-600 hover:text-zone-41-red transition-colors">
-                    Home
-                  </a>
-                </li>
-                
-                {{ if .PrevPage }}
-                  <li class="next">
-                    <a href="{{ .PrevPage.Permalink }}?ref=footer" class="text-gray-600 hover:text-zone-41-red transition-colors flex items-center">
-                      Next <span aria-hidden="true" class="ml-1">&rarr;</span>
-                    </a>
-                  </li>
-                {{ else }}
-                  <li class="invisible"></li>
-                {{ end }}
-              </ul>
-            </nav>
-          </div>
+
         </div>
       </div>
     </div>
