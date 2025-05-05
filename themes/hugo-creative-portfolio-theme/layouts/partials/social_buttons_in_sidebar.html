@@ -1,57 +1,46 @@
-<p class="social">
-  {{ with .Site.Params.social.facebook }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external facebook">
-    <i class="fa fa-facebook"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.googleplus }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external gplus">
-    <i class="fa fa-google-plus"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.twitter }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external twitter">
-    <i class="fa fa-twitter"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.instagram }}
-  <a href="{{ . }}" title="" class="external instagram">
-    <i class="fa fa-instagram"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.email }}
-  <a href="mailto:{{ . }}" data-animate-hover="pulse" class="email">
-    <i class="fa fa-envelope"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.linkedin }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-linkedin"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.stackoverflow }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-stack-overflow"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.github }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-github"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.gitlab }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-gitlab"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.youtube }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-youtube"></i>
-  </a>
-  {{end}}
-  {{ with .Site.Params.social.whatsapp }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
-    <i class="fa fa-whatsapp"></i>
-  </a>
-  {{end}}
-</p>
+{{ define "main" }}
+<div class="w-full md:w-3/4 lg:w-4/5 bg-white inner-article">
+  {{ partial "mobile_nav_toggle.html" . }}
+
+  <div class="page-head page-head-2">
+    <h2>Drop me a line, maybe?</h2>
+  </div>
+  
+  <div class="px-4 py-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="w-full">
+        {{ with .Site.Params.email }}
+         <form id="contact-form" class="contact-form" method="post" data-netlify="true">
+           <div class="space-y-6">
+             <div class="form-group">
+               <label for="name" class="block text-gray-700 font-medium mb-2">Your name *</label>
+               <input type="text" name="name" id="name" required 
+                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-zone-41-red">
+             </div>
+             
+             <div class="form-group">
+               <label for="email" class="block text-gray-700 font-medium mb-2">Your email *</label>
+               <input type="email" name="email" id="email" required 
+                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-zone-41-red">
+             </div>
+             
+             <div class="form-group">
+               <label for="message" class="block text-gray-700 font-medium mb-2">Your message for me *</label>
+               <textarea rows="4" name="message" id="message" required 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-zone-41-red"></textarea>
+             </div>
+             
+             <div>
+               <button type="submit" 
+                      class="px-6 py-2 border-2 border-zone-41-red text-zone-41-red hover:bg-zone-41-red hover:text-white transition-colors duration-300 rounded-md">
+                 Send
+               </button>
+             </div>
+           </div>
+         </form>
+         {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

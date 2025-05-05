@@ -1,67 +1,75 @@
 {{ define "main" }}
-  <div
-    class="col-xs-12 col-sm-8 col-md-9 content-column white-background inner-article">
-    <div
-      class="row-no-gutters page-head page-head-{{ default "1" $.Params.headerNumber }}">
+  <div class="w-full md:w-3/4 lg:w-4/5 bg-white inner-article">
+    <div class="page-head page-head-{{ default "1" $.Params.headerNumber }}">
       <h2>{{ .Title }}</h2>
     </div>
+    
     {{ partial "mobile_nav_toggle.html" . }}
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+    
+    <div class="px-4 py-6">
+      <div class="max-w-4xl mx-auto">
         <div class="content-column-content">
           {{- if .Params.blocks }}
             {{- range .Params.blocks -}}
-              <div class="row">
-                <div class="col-sm-8">
+              <div class="flex flex-wrap -mx-4 mb-8">
+                <div class="w-full md:w-2/3 px-4">
                   {{- if .youtube -}}{{ partial "blocks/youtube" . }}{{- end -}}
                   {{- if .sheets -}}{{ partial "blocks/sheets" . }}{{- end -}}
                   {{- if .image -}}{{ partial "blocks/image" . }}{{- end -}}
-                  {{- if .instagram -}}
-                    {{ partial "blocks/instagram" . }}
-                  {{- end -}}
+                  {{- if .instagram -}}{{ partial "blocks/instagram" . }}{{- end -}}
                 </div>
-                <div class="col-sm-4">{{ markdownify .content }}</div>
+                <div class="w-full md:w-1/3 px-4 mt-4 md:mt-0">
+                  {{ markdownify .content }}
+                </div>
               </div>
             {{- end -}}
           {{- else -}}
-            <div class="row">
-              <div class="col-sm-12">
-                {{ .Content }}
-              </div>
+            <div class="prose max-w-none">
+              {{ .Content }}
             </div>
           {{- end -}}
-          <div class="row">
-            <div class="col-sm-12">
-              <nav>
-                <ul class="pager">
-                  {{ if .NextPage }}
-                    <li class="previous">
-                      <a href="{{ .NextPage.Permalink }}?ref=footer"
-                        ><span aria-hidden="true">&larr;</span> Previous</a
-                      >
-                    </li>
-                  {{ end }}
-                    <li><a href="{{ .Site.BaseURL }}">Home</a></li>
-                  {{ if .PrevPage }}
-                    <li class="next">
-                      <a href="{{ .PrevPage.Permalink }}?ref=footer"
-                        >Next <span aria-hidden="true">&rarr;</span></a
-                      >
-                    </li>
-                  {{ end }}
-                </ul>
-              </nav>
-            </div>
+          
+          <div class="mt-12 py-4 border-t border-gray-200">
+            <nav>
+              <ul class="flex justify-between items-center">
+                {{ if .NextPage }}
+                  <li class="previous">
+                    <a href="{{ .NextPage.Permalink }}?ref=footer" class="text-gray-600 hover:text-zone-41-red transition-colors flex items-center">
+                      <span aria-hidden="true" class="mr-1">&larr;</span> Previous
+                    </a>
+                  </li>
+                {{ else }}
+                  <li class="invisible"></li>
+                {{ end }}
+                
+                <li>
+                  <a href="{{ .Site.BaseURL }}" class="text-gray-600 hover:text-zone-41-red transition-colors">
+                    Home
+                  </a>
+                </li>
+                
+                {{ if .PrevPage }}
+                  <li class="next">
+                    <a href="{{ .PrevPage.Permalink }}?ref=footer" class="text-gray-600 hover:text-zone-41-red transition-colors flex items-center">
+                      Next <span aria-hidden="true" class="ml-1">&rarr;</span>
+                    </a>
+                  </li>
+                {{ else }}
+                  <li class="invisible"></li>
+                {{ end }}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
   <script>
-    document.onreadystatechange = () => {
-      if (document.readyState === "interactive") {
-        const player = new Plyr("#player", {});
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.getElementById('player')) {
+        const player = new Plyr('#player', {});
       }
-    };
+    });
   </script>
 {{ end }}

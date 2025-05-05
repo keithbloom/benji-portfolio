@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  tailwind:
+    image: node:18-alpine
+    container_name: benji-portfolio-tailwind
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "npm install && npm run tailwind:watch"
+
   hugo:
     build: .
     container_name: benji-portfolio-website 
@@ -12,3 +20,5 @@ services:
       - HUGO_ENVIRONMENT=development
       - HUGO_BUILDDRAFTS=true
     command: server --bind 0.0.0.0 --themesDir themes --theme hugo-creative-portfolio-theme
+    depends_on:
+      - tailwind

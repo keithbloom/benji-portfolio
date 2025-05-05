@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ .Site.LanguageCode }}">
-<head>{{ partial "head.html" . }}</head>
-<body>
-  <div id="all">
-      <div class="container-fluid">
-          <div class="row row-offcanvas row-offcanvas-left">
-              {{ partial "sidebar.html" . }}
-              {{ block "main" . }}
-              {{ end }}
-          </div>
-      </div>
-  </div>
-  {{ partial "scripts.html" . }}
-</body>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="bg-gray-100">
+    <div id="all" class="flex h-screen p-4 overflow-hidden">
+        {{ partial "sidebar.html" . }}
+        {{ block "main" . }}
+        {{ end }}
+    </div>
+    {{ partial "scripts.html" . }}
+  </body>
 </html>

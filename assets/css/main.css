@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .page-head h2 {
+    @apply pt-24 px-5 pb-3 font-carter text-6xl lg:text-8xl;
+  }
+  
+  .page-head-1 {
+    @apply bg-zone-43-pink;
+  }
+  
+  .page-head-1 h2 {
+    @apply text-zone-41-red;
+  }
+  
+  .page-head-2 {
+    @apply bg-zone-41-red;
+  }
+  
+  .page-head-2 h2 {
+    @apply text-zone-41-orange;
+  }
+  
+  .page-head-3 {
+    @apply bg-zone-41-orange;
+  }
+  
+  .page-head-3 h2 {
+    @apply text-zone-41-red;
+  }
+  
+  .page-head-4 {
+    @apply bg-zone-41-red;
+  }
+  
+  .page-head-4 h2 {
+    @apply text-zone-43-pink;
+  }
+  
+  .page-head-5 {
+    @apply bg-zone-42-green;
+  }
+  
+  .page-head-5 h2 {
+    @apply text-zone-44-pink;
+  }
+  
+  .page-head-6 {
+    @apply bg-zone-44-pink;
+  }
+  
+  .page-head-6 h2 {
+    @apply text-zone-41-orange;
+  }
+  
+  .inner-article {
+    @apply p-0;
+  }
+  
+  .google-sheets {
+    @apply aspect-video;
+  }
+  
+  a.sidebar-title {
+    @apply text-zone-41-red;
+  }
+  
+  .content-column-content ul.pager li:before {
+    @apply content-none;
+  }
+  
+  .content-column-content .row {
+    @apply pb-6;
+  }
+}

@@ -1,40 +1,73 @@
-<div class="col-xs-12 col-sm-8 col-md-9 content-column">
-    {{ partial "mobile_nav_toggle.html" . }}
-    <div class="grid">
-        <div class="row">
-          {{ range .Data.Pages }}
-              <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 masonry-item">
-                  <div class="box-masonry">
-                      {{ if and (isset .Params "image") .Params.image }}
-                        {{ if eq .Params.showonlyimage true }}
-                        <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay">
-                        {{ else }}
-                        <a href="{{ .Permalink }}" title="" class="box-masonry-image with-hover-overlay with-hover-icon">
-                        {{ end }}
-                            {{ $img := resources.Get .Params.image  | fingerprint }}
-                            {{ $img := $img.Resize "600x" }}
-                            <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" class="img-responsive">
-                        </a>
-                      {{ end }}
-                      {{ if eq .Params.showonlyimage true }}
-                      <div class="box-masonry-hover-text-header">
-                      {{ else }}
-                      <div class="box-masonry-text">
-                      {{ end }}
-                          <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                          <div class="box-masonry-description">
-                            <p>
-                                {{ if .Description }}
-                                  {{ .Description }}
-                                {{ else }}
-                                  {{ .Summary }}
-                                {{ end }}
-                            </p>
-                          </div>
-                      </div>
-                  </div>
+<div class="flex-1 flex flex-col overflow-hidden">
+  {{ partial "mobile_nav_toggle.html" . }}
+  <div class="grid-container px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {{ range .Data.Pages }}
+        <div class="portfolio-item">
+          <div class="box-masonry bg-white shadow-md hover:shadow-lg transition-shadow rounded overflow-hidden">
+            {{ if and (isset .Params "image") .Params.image }}
+              {{ if eq .Params.showonlyimage true }}
+              <a href="{{ .Permalink }}" class="block relative overflow-hidden">
+              {{ else }}
+              <a href="{{ .Permalink }}" class="block relative overflow-hidden">
+              {{ end }}
+                {{ $img := resources.Get .Params.image | fingerprint }}
+                {{ $img := $img.Resize "600x" }}
+                <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" 
+                     class="w-full h-auto transition-transform duration-300 hover:scale-105" alt="">
+              </a>
+            {{ end }}
+            
+            {{ if eq .Params.showonlyimage true }}
+            <div class="p-4 bg-white bg-opacity-90 absolute bottom-0 w-full">
+            {{ else }}
+            <div class="p-4">
+            {{ end }}
+              <h4 class="text-lg font-bold mb-2">
+                <a href="{{ .Permalink }}" class="text-gray-800 hover:text-zone-41-red transition-colors">{{ .Title }}</a>
+              </h4>
+              <div class="text-gray-600">
+                <p>
+                  {{ if .Description }}
+                    {{ .Description }}
+                  {{ else }}
+                    {{ .Summary }}
+                  {{ end }}
+                </p>
               </div>
-          {{ end }}
+            </div>
+          </div>
         </div>
+      {{ end }}
     </div>
+  </div>
 </div>
+
+<script>
+  // Initialize masonry-like layout with pure JS if needed
+  // This is optional since we're using CSS Grid which handles most of the layout
+  document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.querySelector('.grid-container');
+    const items = document.querySelectorAll('.portfolio-item');
+    
+    // Load all images before calculating layout
+    const images = document.querySelectorAll('.portfolio-item img');
+    let loadedImages = 0;
+    
+    function handleImageLoad() {
+      loadedImages++;
+      if (loadedImages === images.length) {
+        // All images are loaded, now we can adjust the layout if needed
+        console.log('All portfolio images loaded');
+      }
+    }
+    
+    images.forEach(img => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad);
+      }
+    });
+  });
+</script>

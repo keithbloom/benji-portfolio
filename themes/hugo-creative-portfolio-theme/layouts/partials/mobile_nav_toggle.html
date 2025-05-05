@@ -1,4 +1,16 @@
-<div class="small-navbar visible-xs">
-  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a class="sidebar-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+<div class="small-navbar md:hidden flex items-center justify-between p-4 bg-white shadow-md">
+  <button type="button" id="menu-toggle" class="text-gray-700 hover:text-zone-41-red transition-colors">
+    <i class="fa fa-align-left mr-2"></i>Menu
+  </button>
+  <h1 class="text-xl">
+    <a class="sidebar-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+  </h1>
 </div>
+
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('hidden');
+    sidebar.classList.toggle('block');
+  });
+</script>
