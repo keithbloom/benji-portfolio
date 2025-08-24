@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="w-full md:w-3/4 lg:w-4/5 bg-white inner-article">
+  <div class="w-full md:min-w-0 md:flex-1 bg-white inner-article">
     <div class="page-head page-head-{{ default "1" $.Params.headerNumber }}-container">
       <h2 class="page-head-{{ default "1" $.Params.headerNumber }}-heading">{{ .Title }}</h2>
     </div>
@@ -18,13 +18,13 @@
                   {{- if .image -}}{{ partial "blocks/image" . }}{{- end -}}
                   {{- if .instagram -}}{{ partial "blocks/instagram" . }}{{- end -}}
                 </div>
-                <div class="w-full md:w-1/3 px-4 mt-4 md:mt-0">
+                <div class="content md:w-1/3 px-4 mt-4 md:mt-0">
                   {{ markdownify .content }}
                 </div>
               </div>
             {{- end -}}
           {{- else -}}
-            <div class="prose max-w-none">
+            <div class="content space-y-6 text-gray-800 leading-relaxed">
               {{ .Content }}
             </div>
           {{- end -}}

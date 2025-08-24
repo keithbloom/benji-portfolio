@@ -1,10 +1,10 @@
 +++
 image = "img/portfolio/karl-krakerpilla.png"
 showonlyimage = false
-title = "Karl Krakerpilla"
+title = "Short animation: The Krackerpilla"
 draft = false
 weight = 1
-description = "A short health education animation created in Adobe Animate about Karl, a caterpillar who faces the consequences of drug use while trying to enhance his backflipping abilities."
+description = "I created this animation using Adobe Animate. The brief was to create a short animation on health for teenagers. I thought it would be good to represent the issues with taking drugs."
 headerNumber = 4
 [[blocks]]
 youtube = "WPDFpLRZnUc"
