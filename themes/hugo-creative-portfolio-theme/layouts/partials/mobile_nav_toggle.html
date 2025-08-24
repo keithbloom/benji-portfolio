@@ -1,16 +1,9 @@
+<!-- Mobile navigation toggle - CSS only -->
 <div class="small-navbar md:hidden flex items-center justify-between p-4 bg-white shadow-md">
-  <button type="button" id="menu-toggle" class="text-gray-700 hover:text-zone-41-red transition-colors">
+  <label for="mobile-menu-toggle" class="text-lusion-blue hover:text-lusion-royal transition-colors cursor-pointer">
     <i class="fa fa-align-left mr-2"></i>Menu
-  </button>
+  </label>
   <h1 class="text-xl">
     <a class="sidebar-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
   </h1>
 </div>
-
-<script>
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hidden');
-    sidebar.classList.toggle('block');
-  });
-</script>

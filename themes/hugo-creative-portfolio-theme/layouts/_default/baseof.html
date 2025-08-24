@@ -4,8 +4,14 @@
     {{ partial "head.html" . }}
   </head>
   <body class="bg-gray-100">
+    <!-- Mobile menu toggle checkbox -->
+    <input type="checkbox" id="mobile-menu-toggle" class="hidden peer">
+    
+    <!-- Sidebar - needs to be sibling of checkbox -->
+    {{ partial "sidebar.html" . }}
+    
     <div id="all" class="flex min-h-screen p-4">
-        {{ partial "sidebar.html" . }}
+        <div class="w-64 hidden md:block"></div> <!-- Spacer for desktop sidebar -->
         {{ block "main" . }}
         {{ end }}
     </div>
