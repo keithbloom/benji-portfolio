@@ -63,6 +63,7 @@ module.exports = {
 			},
 			fontFamily: {
 				carter: ['Cal Sans', 'sans-serif'],
+				garamond: ['EB Garamond', 'serif'],
 			},
 		},
 	},

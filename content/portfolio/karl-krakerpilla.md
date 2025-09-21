@@ -1,7 +1,7 @@
 +++
 image = "img/portfolio/karl-krakerpilla.png"
 showonlyimage = false
-title = "Short animation: The Krackerpilla"
+title = "Animation: The Krackerpilla"
 draft = false
 weight = 1
 description = "I created this animation using Adobe Animate. The brief was to create a short animation on health for teenagers. I thought it would be good to represent the issues with taking drugs."

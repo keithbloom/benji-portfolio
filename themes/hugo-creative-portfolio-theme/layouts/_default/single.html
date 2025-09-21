@@ -17,6 +17,11 @@
                   {{- if .sheets -}}{{ partial "blocks/sheets" . }}{{- end -}}
                   {{- if .image -}}{{ partial "blocks/image" . }}{{- end -}}
                   {{- if .instagram -}}{{ partial "blocks/instagram" . }}{{- end -}}
+                  {{- if $.Content}}
+                    <div class="content space-y-6 text-gray-800 leading-relaxed mt-4 [&>p]:font-garamond [&>p]:text-2xl">
+                      {{ $.Content }}
+                    </div>
+                  {{- end -}}
                 </div>
                 <div class="content md:w-1/3 px-4 mt-4 md:mt-0">
                   {{ markdownify .content }}
@@ -28,7 +33,6 @@
               {{ .Content }}
             </div>
           {{- end -}}
-
         </div>
       </div>
     </div>

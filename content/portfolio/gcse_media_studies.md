@@ -1,4 +1,5 @@
 +++
+image = "img/portfolio/gcse-static-man.jpg"
 showonlyimage = false
 title = "Short film: GCSE media studies"
 draft = false

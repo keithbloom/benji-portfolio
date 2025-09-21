@@ -6,9 +6,9 @@ draft = false
 weight = 5
 description = "I wrote this when I was 15 as an exercise for my GCSE English language paper. I created this as a piece of descriptive writing based on an image of Brighton pier."
 headerNumber = 6
+[[blocks]]
+content="I really enjoy visiting this piece of writing, it is one of my proudest achievements because it contains the imagery and emotional language that I love to use. I enjoy writing and have been writing since I was young. I think it is one of my key strengths. I like writing using different tones and styles, my preference is for very evocative stories or prose but comedy is another one of my favourites.\n\n&nbsp;"
 +++
-I really enjoy visiting this piece of writing, it is one of my proudest achievements because it contains the imagery and emotional language that I love to use. I enjoy writing and have been writing since I was young. I think it is one of my key strengths. I like writing using different tones and styles, my preference is for very evocative stories or prose but comedy is another one of my favourites.
-
 ## Ashes
 
 The train rampages down the track in a fit of anger as I sit in it. 'Ticket', vulgarly commands a middle aged man who looks like his prime has been long since past and he must think the same for me. He enquires for my ticket to ride; with my aged boney hand I shakenly deliver him my bonafide ticket and watch him inspect it as he looks back at me then at the ticket once more. Arrival. I'm here. I'm back in Brighton. It could bring a tear to my eye if it wouldn't evaporate in the heat of my shame.

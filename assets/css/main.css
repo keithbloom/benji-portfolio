@@ -33,7 +33,7 @@
   }
 
   .content h2 {
-    @apply text-3xl font-semibold text-gray-800 mb-5 mt-10 leading-snug border-b border-gray-200 pb-2;
+    @apply text-3xl font-semibold text-gray-800 mb-5 mt-2 leading-snug border-b border-gray-200 pb-2;
   }
 
   .content h3 {
