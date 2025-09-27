@@ -1,8 +1,10 @@
 +++
 title = "About"
-aboutImage = "img/portfolio/about-page.jpg"
+aboutImage = "img/portfolio/benji-about.jpg"
+headerNumber = 1
 +++
+As a child I was consumed with storytelling whether it was reading, creative writing, acting or watching films. Initially I was an avid reader and dreamt of being a writer. I loved books that created visual imagery, such as Douglas Adams Hitchhiker's Guide to the Galaxy; the first book I fell in love with for the dry sense of humour and absurd visuals. I also loved films for the emotions they evoked in me. I still remember the first film that made me cry, it was Monsters Inc. 
 
-As a young child, I liked to create short films. Initially, I used my iPod and iMovie to create stop animation movies using Lego figures to depict fun storylines set to music.  As an older child, I became part of Henry Jenkins participatory culture; a prosumer, wanting to create content for my own YouTube channel.  It was during the first lockdown, when my world shrunk and life went  online, that I started creating short films.  It combined my love of narrative with love of technology and helped me cope with the isolation. I experimented with various video editing software before settling on Premier Pro.  I was self taught, watching YouTube tutorials first on the basics, then on specific skills, such as key framing or colour grading.  
+GCSE Media Studies gave me my first taste of creating a short film and led me to studying Film Studies at A Level. This has consolidated for me that I love visual storytelling. I see the stories I have been creating as moving images and how to capture these with cinematography.
 
-I have recently completed my education, gaining AAB for A Levels in Media, Business and History. I also achieved an A for my EPQ titled “Brexit, was it a remain failure or leave success?”. I have a confirmed place at UEA for BA (Hons) Film & Television Production for deferred entry in 2025. It is my ambition to have a career in the media industry.
+Filmmaking is an area that I’d like to study in more depth at University with a view to a career within the creative industries.

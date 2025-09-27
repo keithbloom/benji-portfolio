@@ -1,14 +1,26 @@
 version: '3'
 
 services:
+  tailwind:
+    image: node:23-alpine
+    container_name: benji-portfolio-tailwind
+    volumes:
+      - .:/src
+    working_dir: /src
+    tty: true
+    command: sh -c "npm install && npm run tailwind:watch"
+
   hugo:
-    build: .
+    image: klakegg/hugo:ext-alpine
     container_name: benji-portfolio-website 
     volumes:
       - .:/src
     ports:
       - "1313:1313"
+    working_dir: /src
     environment:
       - HUGO_ENVIRONMENT=development
       - HUGO_BUILDDRAFTS=true
     command: server --bind 0.0.0.0 --themesDir themes --theme hugo-creative-portfolio-theme
+    depends_on:
+      - tailwind

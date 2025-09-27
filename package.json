@@ -1,14 +1,22 @@
 {
   "name": "benji-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio website with Tailwind CSS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "hugo server",
+    "build": "hugo --minify",
+    "tailwind:watch": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --watch",
+    "tailwind:build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --minify",
+    "start": "concurrently npm:dev npm:tailwind:watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
     "prettier-plugin-go-template": "^0.0.15"
   }
 }

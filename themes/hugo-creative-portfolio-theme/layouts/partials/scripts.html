@@ -1,11 +1,65 @@
 <script src="{{ "js/jquery.min.js" | absURL }}"></script>
-<script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
-<script src="{{ "js/jquery.cookie.js" | absURL }}"> </script>
-<script src="{{ "js/ekko-lightbox.js" | absURL }}"></script>
-<script src="{{ "js/jquery.scrollTo.min.js" | absURL }}"></script>
-<script src="{{ "js/masonry.pkgd.min.js" | absURL }}"></script>
-<script src="{{ "js/imagesloaded.pkgd.min.js" | absURL }}"></script>
-<script src="{{ "js/owl.carousel.min.js" | absURL }}"></script>
-<script src="{{ "js/front.js" | absURL }}"></script>
+<script src="{{ "js/jquery.cookie.js" | absURL }}"></script>
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
+<!-- Initialize components -->
+<script>
+  // Initialize Plyr player if it exists
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.plyr')) {
+      const player = new Plyr('.plyr', {});
+    }
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    if (menuToggle && sidebar) {
+      // Hide sidebar by default on mobile
+      if (window.innerWidth < 768) {
+        sidebar.classList.add('hidden');
+      }
+      
+      menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('hidden');
+      });
+      
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', function(event) {
+        if (window.innerWidth < 768 && 
+            !sidebar.contains(event.target) && 
+            !menuToggle.contains(event.target) && 
+            !sidebar.classList.contains('hidden')) {
+          sidebar.classList.add('hidden');
+        }
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+          sidebar.classList.remove('hidden');
+        } else if (!menuToggle.classList.contains('active')) {
+          sidebar.classList.add('hidden');
+        }
+      });
+    }
+    
+    // Add smooth scrolling to all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        
+        if (href !== '#') {
+          e.preventDefault();
+          
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  });
+</script>

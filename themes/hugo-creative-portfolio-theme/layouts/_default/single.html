@@ -1,67 +1,46 @@
 {{ define "main" }}
-  <div
-    class="col-xs-12 col-sm-8 col-md-9 content-column white-background inner-article">
-    <div
-      class="row-no-gutters page-head page-head-{{ default "1" $.Params.headerNumber }}">
-      <h2>{{ .Title }}</h2>
-    </div>
+  <div class="w-full md:min-w-0 md:flex-1 bg-white inner-article">
+  
     {{ partial "mobile_nav_toggle.html" . }}
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1">
+    {{ partial "header.html" .}}
+    
+    <div class="px-4 py-6">
+      <div class="max-w-6xl mx-auto">
         <div class="content-column-content">
           {{- if .Params.blocks }}
             {{- range .Params.blocks -}}
-              <div class="row">
-                <div class="col-sm-8">
+              <div class="flex flex-wrap -mx-4 mb-8">
+                <div class="w-full md:w-2/3 px-4">
                   {{- if .youtube -}}{{ partial "blocks/youtube" . }}{{- end -}}
                   {{- if .sheets -}}{{ partial "blocks/sheets" . }}{{- end -}}
                   {{- if .image -}}{{ partial "blocks/image" . }}{{- end -}}
-                  {{- if .instagram -}}
-                    {{ partial "blocks/instagram" . }}
+                  {{- if .instagram -}}{{ partial "blocks/instagram" . }}{{- end -}}
+                  {{- if $.Content}}
+                    <div class="content space-y-6 text-gray-800 leading-relaxed mt-4 [&>p]:font-garamond [&>p]:text-2xl">
+                      {{ $.Content }}
+                    </div>
                   {{- end -}}
                 </div>
-                <div class="col-sm-4">{{ markdownify .content }}</div>
+                <div class="content md:w-1/3 px-4 mt-4 md:mt-0">
+                  {{ markdownify .content }}
+                </div>
               </div>
             {{- end -}}
           {{- else -}}
-            <div class="row">
-              <div class="col-sm-12">
-                {{ .Content }}
-              </div>
+            <div class="content space-y-6 text-gray-800 leading-relaxed">
+              {{ .Content }}
             </div>
           {{- end -}}
-          <div class="row">
-            <div class="col-sm-12">
-              <nav>
-                <ul class="pager">
-                  {{ if .NextPage }}
-                    <li class="previous">
-                      <a href="{{ .NextPage.Permalink }}?ref=footer"
-                        ><span aria-hidden="true">&larr;</span> Previous</a
-                      >
-                    </li>
-                  {{ end }}
-                    <li><a href="{{ .Site.BaseURL }}">Home</a></li>
-                  {{ if .PrevPage }}
-                    <li class="next">
-                      <a href="{{ .PrevPage.Permalink }}?ref=footer"
-                        >Next <span aria-hidden="true">&rarr;</span></a
-                      >
-                    </li>
-                  {{ end }}
-                </ul>
-              </nav>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+  
   <script>
-    document.onreadystatechange = () => {
-      if (document.readyState === "interactive") {
-        const player = new Plyr("#player", {});
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.getElementById('player')) {
+        const player = new Plyr('#player', {});
       }
-    };
+    });
   </script>
 {{ end }}

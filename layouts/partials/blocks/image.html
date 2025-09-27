@@ -1,18 +1,20 @@
-{{ $contentImage := resources.Get .image  | fingerprint }}
-<div>
+{{ $contentImage := resources.Get .image | fingerprint }}
+<div class="w-full">
   {{- if .imageLink -}}
-    <a href="{{ .imageLink }}" target="_blank">
+    <a href="{{ .imageLink }}" target="_blank" rel="noopener" class="block">
       <img
         src="{{ $contentImage.RelPermalink }}"
         width="{{ $contentImage.Width }}"
         height="{{ $contentImage.Height }}"
-        class="img-responsive" />
+        class="w-full h-auto rounded-md shadow-md hover:shadow-lg transition-shadow" 
+        alt="{{ with .imageAlt }}{{ . }}{{ else }}Content image{{ end }}" />
     </a>
   {{- else -}}
     <img
       src="{{ $contentImage.RelPermalink }}"
       width="{{ $contentImage.Width }}"
       height="{{ $contentImage.Height }}"
-      class="img-responsive" />
+      class="w-full h-auto rounded-md shadow-md" 
+      alt="{{ with .imageAlt }}{{ . }}{{ else }}Content image{{ end }}" />
   {{- end -}}
 </div>

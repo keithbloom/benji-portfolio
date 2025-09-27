@@ -6,23 +6,27 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<link rel="stylesheet" href="{{ "css/bootstrap.min.css" | absURL }}">
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Carter+One:400,300,700,400italic">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
 <link rel="stylesheet" href="{{ "css/font-awesome.min.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/owl.carousel.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/owl.theme.css" | absURL }}">
+<!-- Plyr for media player -->
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-<!-- Theme stylesheet, if possible do not edit this stylesheet -->
-{{ with .Site.Params.style }}
-  <link href="{{ printf "css/style.%s.css" . | absURL }}" rel="stylesheet" id="theme-stylesheet">
+<!-- Tailwind CSS -->
+<!-- If using Hugo Pipes for CSS processing -->
+{{ if (fileExists "assets/css/style.css") }}
+  {{ $styles := resources.Get "css/style.css" | resources.Minify }}
+  <link href="{{ $styles.RelPermalink }}" rel="stylesheet">
 {{ else }}
-  <link href="{{ "css/style.default.css" | absURL }}" rel="stylesheet" id="theme-stylesheet">
+  <!-- Fallback to static CSS -->
+  <link href="{{ "css/style.css" | absURL }}" rel="stylesheet">
 {{ end }}
-<!-- Custom stylesheet - for your changes -->
-{{ $styles := resources.Get "css/custom.css" | fingerprint }}
-<link href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" rel="stylesheet">
-<link href="{{ "css/demo.css" | absURL }}" rel="stylesheet">
+<!-- Favicon -->
+ <link href="{{ "css/demo.css" | absURL }}" rel="stylesheet">
 <link rel="shortcut icon" href="{{ "img/favicon.png" | absURL }}">
+<!-- RSS -->
 {{ with .OutputFormats.Get "RSS" }}
   {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
 {{ end }}

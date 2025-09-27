@@ -1,57 +1,67 @@
-<p class="social social--big">
+<div class="social-links-big flex flex-wrap gap-3 mb-8">
   {{ with .Site.Params.social.facebook }}
-  <a href="{{ . }}" class="facebook">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
     <i class="fa fa-facebook"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.googleplus }}
-  <a href="{{ . }}" class="gplus">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors">
     <i class="fa fa-google-plus"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.twitter }}
-  <a href="{{ . }}" class="twitter">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-blue-400 text-white rounded-full hover:bg-blue-500 transition-colors">
     <i class="fa fa-twitter"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.instagram }}
-  <a href="{{ . }}" title="" class="instagram">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-pink-600 text-white rounded-full hover:bg-pink-700 transition-colors">
     <i class="fa fa-instagram"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.email }}
-  <a href="mailto:{{ . }}" class="email">
+  <a href="mailto:{{ . }}" class="w-10 h-10 flex items-center justify-center bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors">
     <i class="fa fa-envelope"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.linkedin }}
-  <a href="{{ . }}">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors">
     <i class="fa fa-linkedin"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.stackoverflow }}
-  <a href="{{ . }}">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-colors">
     <i class="fa fa-stack-overflow"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.github }}
-  <a href="{{ . }}">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-full hover:bg-gray-900 transition-colors">
     <i class="fa fa-github"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.gitlab }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-orange-500 text-white rounded-full hover:bg-orange-600 transition-colors">
     <i class="fa fa-gitlab"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.youtube }}
-  <a href="{{ . }}">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors">
     <i class="fa fa-youtube"></i>
   </a>
   {{end}}
+  
   {{ with .Site.Params.social.whatsapp }}
-  <a href="{{ . }}" data-animate-hover="pulse" class="external">
+  <a href="{{ . }}" target="_blank" rel="noopener" class="w-10 h-10 flex items-center justify-center bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
     <i class="fa fa-whatsapp"></i>
   </a>
   {{end}}
-</p>
+</div>

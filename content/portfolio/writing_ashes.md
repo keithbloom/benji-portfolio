@@ -1,0 +1,22 @@
++++
+image = "img/portfolio/brighton_pier.jpg"
+showonlyimage = false
+title = "Writing: Ashes"
+draft = false
+weight = 5
+description = "I wrote this when I was 15 as an exercise for my GCSE English language paper. I created this as a piece of descriptive writing based on an image of Brighton pier."
+headerNumber = 6
+[[blocks]]
+content="I really enjoy visiting this piece of writing, it is one of my proudest achievements because it contains the imagery and emotional language that I love to use. I enjoy writing and have been writing since I was young. I think it is one of my key strengths. I like writing using different tones and styles, my preference is for very evocative stories or prose but comedy is another one of my favourites.\n\n&nbsp;"
++++
+## Ashes
+
+The train rampages down the track in a fit of anger as I sit in it. 'Ticket', vulgarly commands a middle aged man who looks like his prime has been long since past and he must think the same for me. He enquires for my ticket to ride; with my aged boney hand I shakenly deliver him my bonafide ticket and watch him inspect it as he looks back at me then at the ticket once more. Arrival. I'm here. I'm back in Brighton. It could bring a tear to my eye if it wouldn't evaporate in the heat of my shame.
+
+Here regretfully again I'm on my infamous beach. My withered foot plunges down into the rocks shielding the beach and they recoil downwards brushing their comrades in arms as they stagger beneath me. I want to shut my mouth as the cruel sea breeze blows into my mouth. An ironic event, sea breezes are joyful for most but here it causes pain as they punish my tongue, it's the same taste I remember and want to forget. My eyes are patronised by a radiant assault. It hangs low waiting for this confrontation, waiting for me to see its divine glory once again inviting for me to stare into its abyss of daylight and for me to stare back with my abyssal humanity. The smell so distinct now as it was yonder in time, aeons ago it was the smell of Mods and their Mopeds, now zany hipsters and their niches that define them. Oh the waves, how could I forget the sight of you, a caged beast gnashing gnawing to get a taste of my decaying vessel I now inhabit.
+
+I may be alone in spirit but I'm… flanked from all sides by families, friends, free thinkers all coincidentally storming the beach today out of all the three hundred and sixty five and a half days of the lord's calendar. Sheep. All of them a flock of sheep being herded by the sea that now is not a beast to them that it was to me but a shepherd, commanding them to go in the sea this far then giving a gentle guiding wave to tell them back to the beach. I hate close spaces breathing on one another's necks as if we are welcomed to, brushing each other's shoulders like a subtle dance expression of joy and glee. Not me, where's my joy and glee?
+
+They don't know what I have done. When life was black and white, and we didn't have this new white facade of Brightons Pier, when we had the real one in all of its beautiful elegant presence. It was just east of the husk. It wasn't just a pier but a palace for fun! A dance floor for only the bold fueled by vices. I was there basking in the sights of Nevada, just a teenager with bad habits that lead to worse consequences. One cigarette 's burnt tip and its plume is frozen there in my memory. Now because of my lame hands the crown jewels of Brighton became the world's most ignominious ashtray.
+
+I will never forgive myself. Caught with my wolfskin tail in my legs shuffling back to the station. A malicious smoke invades my nose and mouth. What was hoped to be a swansong for a tarnished reveller, became just one of the many unwelcome treatments of Brighton. Now that I'm here in this station for the metallic screaming war beasts, I decide to look at the last of my land long ago lost and I see. The one stranger in this nostalgic hive mind… Me. Did I ever belong in Brighton or was it a fugue state induced by daring fibs of what was my family? It's here now my 'saving grace' in this blasted tormentor. I board the train, take my throne of shame forged by guilt, I gaze out a window and I'm betrayed by the window, hoping to see the last of this land and its cult of personality. I see instead a reflection of a man. Scared by the sands of time. I think bluntly then it invites itself to this crazed victim and victimiser's mental memoir. Three words. Ashes to ashes.

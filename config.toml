@@ -23,11 +23,6 @@ theme = "hugo-creative-portfolio-theme"
   name = "About"
   url = "about/"
 
-  [[params.navlinks]]
-  name = "Get in touch"
-  url = "contact/"
-
-
 [services]
   [services.googleAnalytics]
     ID = 'G-L15E732RKV'
