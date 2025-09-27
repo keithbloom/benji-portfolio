@@ -1,13 +1,11 @@
 {{ define "main" }}
   <div class="w-full md:min-w-0 md:flex-1 bg-white inner-article">
-    <div class="page-head page-head-{{ default "1" $.Params.headerNumber }}-container">
-      <h2 class="page-head-{{ default "1" $.Params.headerNumber }}-heading">{{ .Title }}</h2>
-    </div>
-    
+  
     {{ partial "mobile_nav_toggle.html" . }}
+    {{ partial "header.html" .}}
     
     <div class="px-4 py-6">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <div class="content-column-content">
           {{- if .Params.blocks }}
             {{- range .Params.blocks -}}

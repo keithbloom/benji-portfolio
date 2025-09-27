@@ -1,6 +1,7 @@
 +++
 title = "About"
 aboutImage = "img/portfolio/benji-about.jpg"
+headerNumber = 1
 +++
 As a child I was consumed with storytelling whether it was reading, creative writing, acting or watching films. Initially I was an avid reader and dreamt of being a writer. I loved books that created visual imagery, such as Douglas Adams Hitchhiker's Guide to the Galaxy; the first book I fell in love with for the dry sense of humour and absurd visuals. I also loved films for the emotions they evoked in me. I still remember the first film that made me cry, it was Monsters Inc. 
 

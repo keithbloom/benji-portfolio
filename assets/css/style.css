@@ -671,7 +671,7 @@ video {
 .page-head h2 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  padding-top: 6rem;
+  padding-top: 7rem;
   padding-bottom: 0.75rem;
   font-family: Cal Sans, sans-serif;
   font-size: 1.5rem;
@@ -1060,6 +1060,10 @@ a.sidebar-title:hover {
 
 .max-w-4xl {
   max-width: 56rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .max-w-lg {
