@@ -12,7 +12,7 @@ services:
 
   hugo:
     image: klakegg/hugo:ext-alpine
-    container_name: benji-portfolio-website 
+    container_name: benji-portfolio-website
     volumes:
       - .:/src
     ports:
@@ -24,3 +24,20 @@ services:
     command: server --bind 0.0.0.0 --themesDir themes --theme hugo-creative-portfolio-theme
     depends_on:
       - tailwind
+
+  # Decap CMS local backend: lets /admin edit the local working tree
+  # (no GitHub login) during development. See local_backend in
+  # static/admin/config.yml.
+  cms-proxy:
+    image: node:23-alpine
+    container_name: benji-portfolio-cms-proxy
+    working_dir: /project
+    volumes:
+      - .:/project
+    ports:
+      - "8081:8081"
+    environment:
+      # fs mode edits files directly without git commits — hugo server
+      # live-reloads the changes; you commit when you're happy.
+      - MODE=fs
+    command: npx -y decap-server
