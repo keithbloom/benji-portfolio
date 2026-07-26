@@ -8,6 +8,10 @@ description = "This is my media course work for my A Level. I created a magazine
 
 [[blocks]]
 type = "image"
+image = "img/portfolio/grounded-a-level-media.jpg"
+
+[[blocks]]
+type = "image"
 image = "img/portfolio/grounded-a-level-media-2.jpg"
 
 [[blocks]]
