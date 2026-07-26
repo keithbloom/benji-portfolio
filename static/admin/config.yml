@@ -3,145 +3,261 @@ backend:
   repo: keithbloom/benji-portfolio
   branch: main
 
-# Every CMS edit opens a draft branch + PR rather than committing straight
-# to main, so changes can be reviewed before they go live.
+# Only used when the site is served from localhost AND the decap-server
+# proxy is running (started automatically by docker compose). Edits then
+# go straight to the local working tree instead of GitHub.
+local_backend: true
+
 publish_mode: editorial_workflow
 
-# Required by Decap's schema even though media is uploaded via Hugo Pipes
-# assets rather than static/. This mirrors the site's existing convention:
-# front matter stores image paths like "img/portfolio/foo.jpg", resolved by
-# `resources.Get` relative to assets/. Note the CMS media picker won't be
-# able to preview these images (assets/ isn't served directly), but the
-# path written into front matter will match what the site expects.
 media_folder: "assets/img/portfolio"
 public_folder: "img/portfolio"
 
-# Only takes effect when running `npx decap-server` locally (see
-# docker-compose.yml's cms-proxy service) — lets /admin edit the local
-# working tree without a GitHub login during development.
-local_backend: true
-
 collections:
-  - name: portfolio
-    label: Portfolio
-    folder: content/portfolio
+  - name: "portfolio"
+    label: "Portfolio"
+    label_singular: "Portfolio Item"
+    folder: "content/portfolio"
     create: true
-    slug: "{{slug}}"
-    format: toml-frontmatter
+    format: "toml-frontmatter"
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Cover image, name: image, widget: image, required: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Cover Image", name: "image", widget: "image" }
       - {
-          label: Show only image (hide caption overlay until hover),
-          name: showonlyimage,
-          widget: boolean,
+          label: "Show Only Image",
+          name: "showonlyimage",
+          widget: "boolean",
           default: false,
+          hint: "Hover overlay style on the homepage grid — doesn't skip the detail page.",
         }
-      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - {
-          label: Sort weight (lower numbers appear first),
-          name: weight,
-          widget: number,
-          value_type: int,
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          hint: "Controls homepage order — lower numbers sort first.",
+        }
+      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Year",
+          name: "year",
+          widget: "number",
+          value_type: "int",
           required: false,
+          hint: "Year the piece was made — shown on the homepage card and project page.",
         }
       - {
-          label: Description (used on the portfolio grid),
-          name: description,
-          widget: text,
+          label: "Role",
+          name: "role",
+          widget: "string",
           required: false,
+          hint: "Benji's role on the piece, e.g. Writer, Director, Editor.",
         }
       - {
-          label: "Header colour (1-8, see the page-head colour system)",
-          name: headerNumber,
-          widget: number,
-          value_type: int,
-          min: 1,
-          max: 8,
-          default: 1,
+          label: "Client",
+          name: "client",
+          widget: "string",
+          required: false,
+          hint: "Who the work was for, e.g. a school brief or a production company.",
         }
-      - label: Blocks
-        name: blocks
-        widget: list
+      - {
+          label: "Tools",
+          name: "tools",
+          widget: "list",
+          required: false,
+          hint: "Software used, e.g. Adobe Premiere Pro, Adobe Animate. One entry per tool.",
+        }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: false,
+          hint: "Disciplines for the homepage filter, e.g. Writing, Directing, Editing, Acting. One entry per tag.",
+        }
+      - label: "Content Blocks"
+        name: "blocks"
+        widget: "list"
         required: false
+        hint: "Each block is one image, YouTube video, Instagram post, or Google Slides embed, with its own commentary."
         types:
-          - label: YouTube video
-            name: youtube-block
-            widget: object
+          - label: "Image"
+            name: "image"
+            widget: "object"
+            summary: "Image: {{fields.image}}"
             fields:
-              - { label: YouTube video ID, name: youtube, widget: string }
+              - { label: "Image", name: "image", widget: "image" }
+              - {
+                  label: "Link URL",
+                  name: "imageLink",
+                  widget: "string",
+                  required: false,
+                  hint: "Optional — wraps the image in a link to this URL.",
+                }
               - &block-commentary
-                {
-                  label: Commentary,
-                  name: content,
-                  widget: text,
-                  required: false,
-                }
-          - label: Google Slides
-            name: sheets-block
-            widget: object
+                label: "Commentary"
+                name: "content"
+                widget: "markdown"
+                required: false
+                buttons: ["bold", "italic", "link", "bulleted-list", "numbered-list"]
+                editor_components: []
+          - label: "YouTube Video"
+            name: "youtube"
+            widget: "object"
+            summary: "YouTube: {{fields.youtube}}"
             fields:
               - {
-                  label: Google Slides embed ID,
-                  name: sheets,
-                  widget: string,
+                  label: "YouTube Video ID",
+                  name: "youtube",
+                  widget: "string",
+                  hint: "The part after v= in the YouTube URL.",
                 }
               - *block-commentary
-          - label: Image
-            name: image-block
-            widget: object
+          - label: "Instagram Post"
+            name: "instagram"
+            widget: "object"
+            summary: "Instagram: {{fields.instagram}}"
             fields:
-              - { label: Image, name: image, widget: image }
               - {
-                  label: Image link (optional),
-                  name: imageLink,
-                  widget: string,
-                  required: false,
-                }
-              - {
-                  label: Image alt text (optional),
-                  name: imageAlt,
-                  widget: string,
-                  required: false,
+                  label: "Instagram Shortcode",
+                  name: "instagram",
+                  widget: "string",
+                  hint: "The part after /p/ in the Instagram post URL.",
                 }
               - *block-commentary
-          - label: Instagram post
-            name: instagram-block
-            widget: object
+          - label: "Google Slides Embed"
+            name: "sheets"
+            widget: "object"
+            summary: "Slides: {{fields.sheets}}"
             fields:
-              - { label: Instagram post ID, name: instagram, widget: string }
+              - {
+                  label: "Embed ID",
+                  name: "sheets",
+                  widget: "string",
+                  hint: "The part after /d/e/ in the Google Slides embed URL.",
+                }
               - *block-commentary
-      - { label: Body, name: body, widget: markdown, required: false }
 
-  - name: pages
-    label: Pages
+  - name: "pages"
+    label: "Pages"
     files:
-      - name: about
-        label: About
-        file: content/about/_index.md
-        format: toml-frontmatter
+      - name: "home"
+        label: "Homepage"
+        file: "content/_index.md"
+        format: "toml-frontmatter"
         fields:
-          - { label: Title, name: title, widget: string }
+          - { label: "Title", name: "title", widget: "string" }
           - {
-              label: About image,
-              name: aboutImage,
-              widget: image,
+              label: "Headline",
+              name: "headline",
+              widget: "string",
+              required: false,
+              hint: "The big heading at the top of the homepage.",
+            }
+          - {
+              label: "Tagline",
+              name: "tagline",
+              widget: "string",
+              required: false,
+              hint: "One line under the headline, e.g. current focus or course.",
+            }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            hint: "The large feature at the top of the homepage."
+            fields:
+              - {
+                  label: "Enabled",
+                  name: "enabled",
+                  widget: "boolean",
+                  default: false,
+                  hint: "Turn the hero on or off without losing its settings.",
+                }
+              - {
+                  label: "Heading",
+                  name: "heading",
+                  widget: "string",
+                  required: false,
+                  hint: "Small label above the hero, e.g. Showreel or Featured work.",
+                }
+              - {
+                  label: "Showreel (YouTube ID)",
+                  name: "youtube",
+                  widget: "string",
+                  required: false,
+                  hint: "The part after v= in the showreel's YouTube URL. When set, the hero shows this video. Paste the ID here once the showreel is ready.",
+                }
+              - {
+                  label: "Featured item",
+                  name: "item",
+                  widget: "relation",
+                  collection: "portfolio",
+                  search_fields: ["title"],
+                  display_fields: ["title"],
+                  value_field: "{{slug}}",
+                  required: false,
+                  hint: "Shown as a large feature card while there's no showreel video. Ignored once a YouTube ID is set.",
+                }
+          - {
+              label: "Intro",
+              name: "body",
+              widget: "markdown",
+              required: false,
+              hint: "Optional short intro shown under the showreel.",
+            }
+      - name: "about"
+        label: "About"
+        file: "content/about/_index.md"
+        format: "toml-frontmatter"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - {
+              label: "Photo",
+              name: "aboutImage",
+              widget: "image",
+              required: false,
+              hint: "Headshot or portrait shown next to the bio.",
+            }
+          - {
+              label: "Skills & software",
+              name: "skills",
+              widget: "list",
+              required: false,
+              hint: "One entry per skill or piece of software.",
+            }
+          - { label: "Bio", name: "body", widget: "markdown" }
+      - name: "contact"
+        label: "Contact"
+        file: "content/contact/_index.md"
+        format: "toml-frontmatter"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - {
+              label: "Email",
+              name: "email",
+              widget: "string",
+              required: false,
+              hint: "Shown on the contact page and in the footer.",
+            }
+          - {
+              label: "LinkedIn URL",
+              name: "linkedin",
+              widget: "string",
               required: false,
             }
           - {
-              label: "Header colour (1-8, see the page-head colour system)",
-              name: headerNumber,
-              widget: number,
-              value_type: int,
-              min: 1,
-              max: 8,
-              default: 1,
+              label: "CV (PDF)",
+              name: "cv",
+              widget: "file",
+              required: false,
+              media_folder: "/static/files",
+              public_folder: "/files",
+              hint: "Downloadable CV offered on the contact page and footer.",
             }
-          - { label: Body, name: body, widget: markdown }
-
-      - name: contact
-        label: Contact
-        file: content/contact/_index.md
-        format: toml-frontmatter
-        fields:
-          - { label: Title, name: title, widget: string }
+          - {
+              label: "Intro",
+              name: "body",
+              widget: "markdown",
+              required: false,
+              hint: "Optional short text above the contact details.",
+            }

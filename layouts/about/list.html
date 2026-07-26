@@ -1,0 +1,31 @@
+{{ define "main" }}
+  <article class="page about wrap">
+    <header class="page__head">
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="about__layout">
+      {{ with .Params.aboutImage }}
+        {{ with resources.Get . }}
+          {{ $img := .Fill "640x800 webp q85" }}
+          <img
+            class="about__photo"
+            src="{{ $img.RelPermalink }}"
+            width="{{ $img.Width }}"
+            height="{{ $img.Height }}"
+            alt="Portrait of {{ site.Title }}" />
+        {{ end }}
+      {{ end }}
+      <div class="about__text prose">
+        {{ .Content }}
+      </div>
+    </div>
+    {{ with .Params.skills }}
+      <section class="skills" aria-label="Skills and software">
+        <h2>Skills &amp; software</h2>
+        <ul class="skills__list">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </article>
+{{ end }}

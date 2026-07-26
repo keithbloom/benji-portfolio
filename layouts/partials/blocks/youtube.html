@@ -1,5 +1,8 @@
-<div 
-  id="player"
-  class="aspect-video w-full rounded-md shadow-md"
-  data-plyr-provider="youtube"
-  data-plyr-embed-id="{{ .youtube }}"></div>
+<div class="video-embed">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/{{ .youtube }}?rel=0"
+    title="YouTube video"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
+</div>

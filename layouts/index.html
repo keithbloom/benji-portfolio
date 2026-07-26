@@ -1,0 +1,121 @@
+{{ define "main" }}
+  {{ $items := where site.RegularPages "Section" "portfolio" }}
+  {{ $items = $items.ByWeight }}
+
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero__title">{{ or .Params.headline site.Title }}</h1>
+      {{ with or .Params.tagline site.Params.tagline }}
+        <p class="hero__tagline">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.hero }}
+        {{ if .enabled }}
+          {{ if .youtube }}
+            {{ with .heading }}<h2 class="hero__heading">{{ . }}</h2>{{ end }}
+            <div class="video-embed hero__reel">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/{{ .youtube }}?rel=0"
+                title="{{ or .heading "Showreel" }}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          {{ else if .item }}
+            {{ with site.GetPage (printf "/portfolio/%s" .item) }}
+              {{ with $.Params.hero.heading }}<h2 class="hero__heading">{{ . }}</h2>{{ end }}
+              <a class="hero-feature" href="{{ .RelPermalink }}">
+                {{ with resources.Get .Params.image }}
+                  {{ $img := .Fill "1440x680 webp q85" }}
+                  <img
+                    src="{{ $img.RelPermalink }}"
+                    width="{{ $img.Width }}"
+                    height="{{ $img.Height }}"
+                    alt="{{ $.Title }}" />
+                {{ end }}
+                <div class="hero-feature__overlay">
+                  <h3 class="hero-feature__title">{{ .Title }}</h3>
+                  <p class="hero-feature__meta">
+                    {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
+                    {{ with .Params.role }}<span>{{ . }}</span>{{ end }}
+                    <span class="hero-feature__cta">View project &rarr;</span>
+                  </p>
+                </div>
+              </a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ with .Content }}<div class="hero__intro prose">{{ . }}</div>{{ end }}
+    </div>
+  </section>
+
+  <section class="work" aria-label="Portfolio">
+    <div class="wrap">
+      {{/* Collect every tag used across portfolio items */}}
+      {{ $tags := slice }}
+      {{ range $items }}
+        {{ range .Params.tags }}
+          {{ $tags = $tags | append . }}
+        {{ end }}
+      {{ end }}
+      {{ $tags = $tags | uniq | sort }}
+
+      {{ if $tags }}
+        <div class="filters" role="group" aria-label="Filter work by discipline">
+          <button class="filters__btn is-active" data-filter="*">All work</button>
+          {{ range $tags }}
+            <button class="filters__btn" data-filter="{{ . | urlize }}">{{ . }}</button>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <div class="grid">
+        {{ range $items }}
+          {{ $tagList := slice }}
+          {{ range .Params.tags }}{{ $tagList = $tagList | append (. | urlize) }}{{ end }}
+          <a
+            class="card"
+            href="{{ .RelPermalink }}"
+            data-tags="{{ delimit $tagList " " }}">
+            <div class="card__media">
+              {{ with resources.Get .Params.image }}
+                {{ $thumb := .Fill "720x480 webp q85" }}
+                <img
+                  src="{{ $thumb.RelPermalink }}"
+                  width="{{ $thumb.Width }}"
+                  height="{{ $thumb.Height }}"
+                  alt="{{ $.Title }}"
+                  loading="lazy" />
+              {{ end }}
+            </div>
+            <div class="card__body">
+              <h2 class="card__title">{{ .Title }}</h2>
+              <p class="card__meta">
+                {{ with .Params.year }}<span>{{ . }}</span>{{ end }}
+                {{ with .Params.role }}<span>{{ . }}</span>{{ end }}
+              </p>
+            </div>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll('.filters__btn');
+      var cards = document.querySelectorAll('.card');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          var f = btn.dataset.filter;
+          cards.forEach(function (card) {
+            var tags = (card.dataset.tags || '').split(' ');
+            card.hidden = f !== '*' && tags.indexOf(f) === -1;
+          });
+        });
+      });
+    })();
+  </script>
+{{ end }}
