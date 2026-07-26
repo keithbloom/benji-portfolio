@@ -1,0 +1,13 @@
+{{ $contact := site.GetPage "/contact" }}
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p class="site-footer__copy">&copy; {{ now.Year }} {{ site.Title }}</p>
+    <nav class="site-footer__links" aria-label="Contact links">
+      {{ with $contact }}
+        {{ with .Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+        {{ with .Params.linkedin }}<a href="{{ . }}" rel="me noopener" target="_blank">LinkedIn</a>{{ end }}
+        {{ with .Params.cv }}<a href="{{ . | relURL }}" download>Download CV</a>{{ end }}
+      {{ end }}
+    </nav>
+  </div>
+</footer>

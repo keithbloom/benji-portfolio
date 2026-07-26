@@ -1,0 +1,45 @@
+{{ define "main" }}
+  <article class="project">
+    <header class="project__head wrap">
+      <p class="eyebrow"><a href="{{ site.Home.RelPermalink }}">&larr; All work</a></p>
+      <h1 class="project__title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="project__lead">{{ . }}</p>{{ end }}
+
+      {{ if or .Params.year .Params.role .Params.client .Params.tools .Params.tags }}
+        <dl class="project__meta">
+          {{ with .Params.year }}
+            <div><dt>Year</dt><dd>{{ . }}</dd></div>
+          {{ end }}
+          {{ with .Params.role }}
+            <div><dt>Role</dt><dd>{{ . }}</dd></div>
+          {{ end }}
+          {{ with .Params.client }}
+            <div><dt>Client</dt><dd>{{ . }}</dd></div>
+          {{ end }}
+          {{ with .Params.tools }}
+            <div><dt>Tools</dt><dd>{{ delimit . ", " }}</dd></div>
+          {{ end }}
+          {{ with .Params.tags }}
+            <div><dt>Discipline</dt><dd>{{ delimit . ", " }}</dd></div>
+          {{ end }}
+        </dl>
+      {{ end }}
+    </header>
+
+    <div class="project__body wrap">
+      {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+      {{ range .Params.blocks }}
+        <section class="block block--{{ .type }}">
+          {{ partial (printf "blocks/%s.html" .type) . }}
+          {{ with .content }}
+            <div class="block__commentary prose">{{ . | markdownify }}</div>
+          {{ end }}
+        </section>
+      {{ end }}
+    </div>
+
+    <footer class="project__foot wrap">
+      <a class="btn" href="{{ site.Home.RelPermalink }}">&larr; Back to all work</a>
+    </footer>
+  </article>
+{{ end }}

@@ -1,27 +1,24 @@
 baseURL = "https://benji-bloom-portfolio.netlify.app/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Benji Bloom"
-theme = "hugo-creative-portfolio-theme"
+disableKinds = ["taxonomy", "term"]
 
 [params]
-  # Style options: default (pink), blue, green, pink, red, sea, violet
-  # Use custom.css for your custom styling
-  style = "blue"
   description = "Describe your website"
-  copyright = "&copy;2025 Benji Bloom"
-  sidebarAbout = [""]
-  # Contact page
-  email = "you@yoursite.com"
 
-  # Nav links in the side bar
+  # Nav links in the header
   [[params.navlinks]]
-  name = "Home"
-  url = "portfolio/"
+  name = "Work"
+  url = "/"
   home = true
 
   [[params.navlinks]]
   name = "About"
   url = "about/"
+
+  [[params.navlinks]]
+  name = "Get in touch"
+  url = "contact/"
 
 [services]
   [services.googleAnalytics]
@@ -29,4 +26,4 @@ theme = "hugo-creative-portfolio-theme"
 
 [markup]
   [markup.goldmark.renderer]
-        hardWraps = true
+    hardWraps = true
