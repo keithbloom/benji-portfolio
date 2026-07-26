@@ -1,0 +1,147 @@
+backend:
+  name: github
+  repo: keithbloom/benji-portfolio
+  branch: main
+
+# Every CMS edit opens a draft branch + PR rather than committing straight
+# to main, so changes can be reviewed before they go live.
+publish_mode: editorial_workflow
+
+# Required by Decap's schema even though media is uploaded via Hugo Pipes
+# assets rather than static/. This mirrors the site's existing convention:
+# front matter stores image paths like "img/portfolio/foo.jpg", resolved by
+# `resources.Get` relative to assets/. Note the CMS media picker won't be
+# able to preview these images (assets/ isn't served directly), but the
+# path written into front matter will match what the site expects.
+media_folder: "assets/img/portfolio"
+public_folder: "img/portfolio"
+
+# Only takes effect when running `npx decap-server` locally (see
+# docker-compose.yml's cms-proxy service) — lets /admin edit the local
+# working tree without a GitHub login during development.
+local_backend: true
+
+collections:
+  - name: portfolio
+    label: Portfolio
+    folder: content/portfolio
+    create: true
+    slug: "{{slug}}"
+    format: toml-frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Cover image, name: image, widget: image, required: false }
+      - {
+          label: Show only image (hide caption overlay until hover),
+          name: showonlyimage,
+          widget: boolean,
+          default: false,
+        }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - {
+          label: Sort weight (lower numbers appear first),
+          name: weight,
+          widget: number,
+          value_type: int,
+          required: false,
+        }
+      - {
+          label: Description (used on the portfolio grid),
+          name: description,
+          widget: text,
+          required: false,
+        }
+      - {
+          label: "Header colour (1-8, see the page-head colour system)",
+          name: headerNumber,
+          widget: number,
+          value_type: int,
+          min: 1,
+          max: 8,
+          default: 1,
+        }
+      - label: Blocks
+        name: blocks
+        widget: list
+        required: false
+        types:
+          - label: YouTube video
+            name: youtube-block
+            widget: object
+            fields:
+              - { label: YouTube video ID, name: youtube, widget: string }
+              - &block-commentary
+                {
+                  label: Commentary,
+                  name: content,
+                  widget: text,
+                  required: false,
+                }
+          - label: Google Slides
+            name: sheets-block
+            widget: object
+            fields:
+              - {
+                  label: Google Slides embed ID,
+                  name: sheets,
+                  widget: string,
+                }
+              - *block-commentary
+          - label: Image
+            name: image-block
+            widget: object
+            fields:
+              - { label: Image, name: image, widget: image }
+              - {
+                  label: Image link (optional),
+                  name: imageLink,
+                  widget: string,
+                  required: false,
+                }
+              - {
+                  label: Image alt text (optional),
+                  name: imageAlt,
+                  widget: string,
+                  required: false,
+                }
+              - *block-commentary
+          - label: Instagram post
+            name: instagram-block
+            widget: object
+            fields:
+              - { label: Instagram post ID, name: instagram, widget: string }
+              - *block-commentary
+      - { label: Body, name: body, widget: markdown, required: false }
+
+  - name: pages
+    label: Pages
+    files:
+      - name: about
+        label: About
+        file: content/about/_index.md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - {
+              label: About image,
+              name: aboutImage,
+              widget: image,
+              required: false,
+            }
+          - {
+              label: "Header colour (1-8, see the page-head colour system)",
+              name: headerNumber,
+              widget: number,
+              value_type: int,
+              min: 1,
+              max: 8,
+              default: 1,
+            }
+          - { label: Body, name: body, widget: markdown }
+
+      - name: contact
+        label: Contact
+        file: content/contact/_index.md
+        format: toml-frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
